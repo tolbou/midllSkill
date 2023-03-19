@@ -13,8 +13,8 @@ public class test {
 		
 //		3.boolean型の変数の値に不正な文字列比較を入れてfalseを出力してください。
 		boolean bool1 = true;
-		boolean bool2 = Boolean.parseBoolean("false");
-		boolean result = bool1 == bool2;
+		String bool2 = "abcddf";
+		boolean result = bool1 == Boolean.parseBoolean(bool2);
 		System.out.println(result);
 	}
 }
