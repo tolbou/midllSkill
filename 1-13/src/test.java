@@ -17,32 +17,42 @@ public class test {
 		List<String> strArray3 = new ArrayList<String>();
 		List<String> strArray4 = new ArrayList<String>();
 
-		for (int i = 2; i < strArray1.size(); i++) {
-			strArray2.add(strArray1.get(i));
-		}
 
-		for (String str : strArray2) {
-			if (str.equals("k") || str.equals("a") || str.equals("o")) {
-				strArray3.add(str);
-			}
-		}
+        for (int i = 2; i < strArray1.size(); i++) {
+            strArray2.add(strArray1.get(i));
+        }
 
-		for (int i = 0; i < strArray3.size(); i++) {
-			if (strArray3.get(i).equals("k")) {
-				if (i + 3 < strArray3.size() && strArray3.get(i + 1).equals("a") && strArray3.get(i + 2).equals("k")
-						&& strArray3.get(i + 3).equals("o")) {
-					strArray4.add("k");
-					strArray4.add("a");
-					strArray4.add("k");
-					strArray4.add("a");
-					strArray4.add("o");
-					break;
-				}
-			}
-		}
+        for (int i = 0; i < strArray2.size(); i++) {
+            if (strArray2.get(i).equals("k") || strArray2.get(i).equals("a") || strArray2.get(i).equals("o")) {
+                strArray3.add(strArray2.get(i));
+            }
+        }
 
-		// 結果を出力する
-		System.out.println(strArray4);
+        outerLoop:
+        for (int i = 0; i < strArray3.size(); i++) {
+            if (strArray3.get(i).equals("k")) {
+                for (int j = i + 1; j < strArray3.size(); j++) {
+                    if (strArray3.get(j).equals("a")) {
+                        for (int k = j + 1; k < strArray3.size(); k++) {
+                            if (strArray3.get(k).equals("k")) {
+                                for (int l = k + 1; l < strArray3.size(); l++) {
+                                    if (strArray3.get(l).equals("a")) {
+                                        for (int m = l + 1; m < strArray3.size(); m++) {
+                                            if (strArray3.get(m).equals("o")) {
+                                                strArray4.addAll(Arrays.asList(strArray3.get(i), strArray3.get(j), strArray3.get(k), strArray3.get(l), strArray3.get(m)));
+                                                break outerLoop;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
-	}
+        System.out.println(strArray4);
+    }
+
 }
