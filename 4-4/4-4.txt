@@ -6,7 +6,7 @@
 「HTMLタグではなくCSSのcolorプロパティを使用します」
 
 ③文字のフォントを変えるためのHTMLタグは何になりますか？
-「HTMLタグではなくCSSのfont-familyプロパティを使用します」
+「HTMLタグではなくCSSのfont-familyプロパティを使用しますor<font face=”フォント名”></font>(これは非推奨)」
 
 ④文字のフォントを変えるためのCSSプロパティは何になりますか？
 「font-family」
