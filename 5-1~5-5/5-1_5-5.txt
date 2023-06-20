@@ -1,0 +1,86 @@
+﻿⚫️課題5-1～5-5
+【準備】
+1.ジップファイルを保存して環境を作って整えてください
+2.pom.xmlは使用するDBで自分で切り替えてください
+3.下記SQL文を打ち込んで下さい
+
+
+3-1
+CREATE TABLE "user" (
+ id SERIAL NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  address VARCHAR(255),
+  phone VARCHAR(50),
+  update_date TIMESTAMP NOT NULL,
+  create_date TIMESTAMP NOT NULL,
+  delete_date TIMESTAMP,
+ PRIMARY KEY (id)
+);
+
+
+3-2
+INSERT INTO public."user"(
+id, name, address, phone, update_date, create_date)
+VALUES ('1', 'テスト太郎', '東京都サンプル区1-1', '080-0000-0000', '2019-05-06 12:00:00', '2019-05-01 12:00:00');
+
+
+
+
+【課題】
+①下記の6つのエラーが発生しCRAD機能とバリデーション、各画面遷移を邪魔して
+いるため修正して正常に行えるようにしてください。
+
+
+TemplateInputException
+NumberFormatException
+ClassCastException
+NullPointerException
+IndexOutOfBoundsException
+ArithmeticException
+
+
+
+
+②TemplateInputExceptionの原因と原因箇所と修正内容を説明してください
+原因:Thymeleafのテンプレートで特定のパースエラーや文法エラーが存在する場合にこのエラーが発生します。
+原因箇所: テンプレートファイル（例えばThymeleafの場合は.htmlファイル）の中で間違った参照がある箇所です。
+修正内容:存在しない変数やメソッドの参照を修正する、または必要ならその変数やメソッドを追加する。
+
+
+
+③NumberFormatExceptionの原因と原因箇所と修正内容を説明してください
+原因:文字列を数値に変換しようとしたとき、文字列の形式が適切な数値を表していない場合に発生します。
+原因箇所:
+String name = new String();
+int User =  Integer.parseInt(name);
+修正内容:2行を消す
+
+
+④ClassCastExceptionの原因と原因箇所と修正内容を説明してください
+原因:特定のクラスのオブジェクトをそのサブクラスや全く関連のない他のクラスのインスタンスにキャストしようとしたときに発生します。
+原因箇所:
+Integer logName = (Integer) name;
+修正内容:下記に変更
+String logName = (String) name;
+
+
+
+⑤NullPointerExceptionの原因と原因箇所と修正内容を説明してください
+原因: nullのオブジェクトに対してメソッドを呼び出そうとしたり、フィールドにアクセスしようとしたときに発生します。
+原因箇所: オブジェクトのメソッドを呼び出したり、フィールドにアクセスしたりしている箇所です。
+修正内容: オブジェクトがnullでないことを確認する、またはnullの場合の適切な処理を行う。
+
+
+
+⑥IndexOutOfBoundsExceptionの原因と原因箇所と修正内容を説明してください
+原因：Javaのリストでは、インデックスは0から始まります。負のインデックスは存在せず、例外を引き起こします。
+原因箇所：for(int i = 0;i<userlist.size()-1;i++) {userlists.add(userlist.get(-2));}
+修正内容：for(int i = 0;i<userlist.size();i++) {userlists.add(userlist.get(i));}
+
+
+⑦ArithmeticExceptionの原因と原因箇所と修正内容を説明してください
+原因:割り切れない場合にこのエラーが発生します。
+原因箇所:
+BigDecimal id3 = id1.divide(id2);
+修正内容:下記に変更
+BigDecimal id3 = id1.divide(id2, 2, RoundingMode.HALF_UP);
